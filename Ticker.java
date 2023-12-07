@@ -24,11 +24,10 @@ public class Ticker
                     while(true)
                     {
                         input = scan.nextLine();
-                        if(input.equals(" "))
+                        if(input.equals(""))
                         {
-                            paused = true;
+                            paused = !paused;
                         }
-                        else{paused = false;}
                     }
                 }
             }
