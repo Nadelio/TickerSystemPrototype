@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ticker
@@ -5,6 +6,7 @@ public class Ticker
     public static boolean tick;
     public static int tickCount;
     public static boolean paused = false;
+    public static ArrayList<Tick> tickList;
 
     public static boolean startTicking() throws InterruptedException
     {
@@ -43,6 +45,7 @@ public class Ticker
                 DoOnTick.everyOtherTick(tick);
                 DoOnTick.everyTick(tick);
                 tickCount++;
+                tickList.add(new Tick(tick, tickCount));
             }
         }
     }

@@ -8,6 +8,6 @@ public class DoOnTick
 
     public static void everyOtherTick(boolean tick)
     {
-        if(tick){System.out.println("Tick is same as two ticks before!");}
+        if(tick && Ticker.tickCount != 0){System.out.println("Tick is same as two ticks before!");}
     }
 }
