@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,7 +16,21 @@ public class Ticker
         return !tick;
     }
 
-    public static void main(String [] args) throws InterruptedException
+    public static void writeTicksToFile() throws IOException
+    {
+        FileWriter fileWriter = new FileWriter("C:/Users/100146766/TickerSystemPrototype/Ticks.json");
+        fileWriter.write("{\n");
+        for(int i = 0; i < tickList.size(); i++)
+        {
+            fileWriter.write(tickList.get(i).toString());
+            if(i == tickList.size() - 1){fileWriter.write("\n");}
+            else{fileWriter.write(",\n");}
+        }
+        fileWriter.write("}");
+        fileWriter.close();
+    }
+
+    public static void main(String [] args) throws InterruptedException, IOException
     {
         Thread inputThread = new Thread(new Runnable()
         {
@@ -30,12 +46,19 @@ public class Ticker
                         {
                             paused = !paused;
                         }
+                        System.out.println("PAUSED");
+                        writeTicksToFile();
                     }
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
                 }
             }
         });
 
         inputThread.start();
+
         while(true)
         {
             while(!paused)
@@ -44,8 +67,8 @@ public class Ticker
                 System.out.println("This tick is: " + tick + "\nTick Count: " + tickCount);
                 DoOnTick.everyOtherTick(tick);
                 DoOnTick.everyTick(tick);
-                tickCount++;
                 tickList.add(new Tick(tick, tickCount));
+                tickCount++;
             }
         }
     }
