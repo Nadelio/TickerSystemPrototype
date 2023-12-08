@@ -6,7 +6,7 @@ public class Ticker
     public static boolean tick;
     public static int tickCount;
     public static boolean paused = false;
-    public static ArrayList<Tick> tickList;
+    public static ArrayList<Tick> tickList = new ArrayList<Tick>();
 
     public static boolean startTicking() throws InterruptedException
     {
