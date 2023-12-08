@@ -18,7 +18,7 @@ public class Ticker
 
     public static void writeTicksToFile() throws IOException
     {
-        FileWriter fileWriter = new FileWriter("./TickerSystemPrototype/Ticks.json"); // issue here, need to change from hard coded file path to one that will work on any computer in any directory
+        FileWriter fileWriter = new FileWriter("./Ticks.json"); // issue here, need to change from hard coded file path to one that will work on any computer in any directory
         fileWriter.write("{\n");
         for(int i = 0; i < tickList.size(); i++)
         {
