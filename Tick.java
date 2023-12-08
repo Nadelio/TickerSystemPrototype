@@ -12,5 +12,5 @@ public class Tick
     public String getTickID(){return tickID;}
     public boolean getTickValue(){return tickValue;}
 
-    public String toString(){return "\t" + '"'+ tickID + '"' + " : " + tickValue;}
+    public String toString(){return "\t" + "\""+ tickID + "\"" + " : " + tickValue;}
 }
